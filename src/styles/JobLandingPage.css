@@ -14,16 +14,19 @@
   font-size: 16px;
 }
 
-.job-listings {
+.job-list {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .job-item {
-  flex: 1 1 45%; /* Two-column layout */
-  margin: 10px;
-  padding: 10px;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.job-item:hover {
+  background-color: #f0f0f0;
 }

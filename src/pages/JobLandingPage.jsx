@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 
 const jobs = [
   {
@@ -17,11 +18,37 @@ const jobs = [
     salary: "$110,000 - $130,000 + Super",
     details: "Software Engineering & Development",
   },
+  {
+    id: 3,
+    title: "Backend Developer",
+    company: "Innovative Tech Co.",
+    location: "Melbourne VIC (Remote)",
+    salary: "$120,000 - $140,000 + Super",
+    details: "Software Engineering & Development",
+  },
+  {
+    id: 4,
+    title: "DevOps Engineer",
+    company: "Cloud Solutions Inc.",
+    location: "Brisbane QLD (Hybrid)",
+    salary: "$115,000 - $135,000 + Super",
+    details: "IT & Networking",
+  },
+  {
+    id: 5,
+    title: "Data Scientist",
+    company: "Data Insights Ltd",
+    location: "Perth WA (Remote)",
+    salary: "$130,000 - $150,000 + Super",
+    details: "Data Science & Analytics",
+  },
 ];
 
-export default function JobListing() {
+
+const JobListing = () => {
   const [selectedJob, setSelectedJob] = useState(null);
-  
+  const navigate = useNavigate(); // Initialize useNavigate
+
   return (
     <div className="h-screen bg-gray-100">
       {/* Header */}
@@ -55,7 +82,7 @@ export default function JobListing() {
               <div
                 key={job.id}
                 className="p-4 border rounded cursor-pointer hover:bg-gray-200"
-                onClick={() => setSelectedJob(job)}
+                onClick={() => navigate(`/job/${job.id}`)} // Redirect to JobDetailPage
               >
                 <h3 className="font-semibold">{job.title}</h3>
                 <p className="text-sm text-gray-600">{job.company}</p>
@@ -85,4 +112,6 @@ export default function JobListing() {
       </div>
     </div>
   );
-}
+};
+
+export default JobListing;
